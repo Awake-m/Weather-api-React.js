@@ -12,66 +12,93 @@
 
 // export default Weather
 
+// Weather.js
 
-
-// src/Weather.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import './style.css';
 
 const Weather = () => {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
-  const [error, setError] = useState('');
-  
+  const [error, setError] = useState(null);
 
-  
-
-  const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
+  const API_KEY = 'fe84db1ffdfb5224878b4743ed849944'; 
 
   const fetchWeather = async () => {
     try {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={fe84db1ffdfb5224878b4743ed849944}`);
-      setWeather(response.data);
-      setError('');
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      if (!response.ok) {
+        throw new Error('Weather data not available for that city.');
+      }
+      const data = await response.json();
+      setWeather({
+        description: data.weather[0].description,
+        temperature: data.main.temp,
+        humidity: data.main.humidity,
+        pressure: data.main.pressure,
+        windSpeed: data.wind.speed
+      });
+      setError(null);
     } catch (error) {
-      setError('City not found. Please enter a valid city name.');
+      setError(error.message);
       setWeather(null);
     }
+
+   
   };
 
-  const handleChange = (e) => {
-    setCity(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchWeather();
+    if (city.trim() !== '') {
+      fetchWeather();
+    }
+
   };
+  console.log(weather)
 
   return (
-    <div className="container">
-      <h1>Weather App</h1>
+    <div className="weather-container"><br></br>
+      <h2>Weather App</h2><br></br>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="city" className="form-label">Enter City Name:  </label>
-          <input type="text" className="form-control" id="city" value={city} onChange={handleChange} required />
-        </div><br></br><br></br>
-        <button type="submit" className="btn btn-primary">Get Weather</button>
-      </form>
+        <input
+          type="text"
+          placeholder="Enter city name"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+       
       
-      {error && <p className="text-danger mt-3">{error}</p>}
-
+        <button type="submit">Search</button>
+      </form>
+      {error && <p className="error-message">{error}</p>}
       {weather && (
-        <div className="mt-3">
-          <h2>Weather in {weather.name}, {weather.sys.country}</h2>
-          <p>Temperature: {weather.main.temp} &deg;C</p>
-          <p>Description: {weather.weather[0].description}</p>
-          <p>Humidity: {weather.main.humidity}%</p>
-          <p>Wind Speed: {weather.wind.speed} m/s</p>
+        <div className="weather-info">
+          <p>City:<br/> {city}</p>
+          <p>Description:<br/> {weather.description} </p>
+          <p>Temperature: {weather.temperature}°C</p>
+          <p>Humidity:<br/> {weather.humidity}%</p>
+          <p>Pressure:<br/> {weather.pressure} hPa</p>
+          <p>Wind Speed:<br/> {weather.windSpeed} m/s</p>
         </div>
       )}
+
+      <h4>Coudly condition form 5pm-7pm with,,<br/>partly cloudy condition expected at 7pm.</h4><br/>
+      <hr></hr><br/>
+      <div className='box3'>
+        <div className='box33'></div>
+        <div className='box33'></div>
+        <div className='box33'></div>
+        <div className='box33'></div>
+        <div className='box33'></div>
+      </div>
+      
     </div>
   );
 };
 
 export default Weather;
+
+

@@ -3,3 +3,83 @@
         padding: 0;
         box-sizing: border-box;
 }
+/* Weather.css */
+
+.weather-container {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 100px;
+        background-image: url("https://www.stormshieldapp.com/static/images/section1.1-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+      .weather-container h2 {
+        margin-bottom: 10px;
+        color: #ccc;
+      }
+      
+      .weather-container form {
+        margin-bottom: 20px;
+      }
+      
+      .weather-container input[type="text"] {
+        padding: 8px;
+        width: 200px;
+        margin-right: 10px;
+      }
+      
+      .weather-container button {
+        padding: 8px 16px;
+        width: 150px;
+        cursor: pointer;
+        border: none;
+      }
+      
+      .weather-container .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+      
+      .weather-container .weather-info {
+        margin-top: 20px;
+      }
+      
+      
+
+      .weather-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+       align-items: center;
+      }
+      
+      .weather-container p{
+        color: #ccc;
+        height: 70px;
+        width: 120px;
+        border: 1px dotted white;
+        margin-top: 40px;
+       }
+       
+       .error-message{
+        width: 100%;
+       }
+       .weather-container h4{
+        margin-top: 20px;
+        color: white;
+       }
+
+       ..weather-container hr{
+        color: gray;
+       }
+       .box3{
+        display: flex;
+        justify-content: space-evenly;
+        border: 1px solid black;
+        height: 100px;
+       }
