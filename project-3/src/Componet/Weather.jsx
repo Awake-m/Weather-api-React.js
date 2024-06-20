@@ -1,18 +1,3 @@
-// import React from 'react'
-
-// import './style.css'
-
-// function Weather() {
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default Weather
-
-// Weather.js
 
 import React, { useState } from 'react';
 import './style.css';
