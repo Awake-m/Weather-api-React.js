@@ -13,14 +13,14 @@
         border-radius: 5px;
         text-align: center;
         margin-top: 100px;
-        background-image: url("https://www.stormshieldapp.com/static/images/section1.1-bg.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
+        border: 10px;
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
       }
       
       .weather-container h2 {
         margin-bottom: 10px;
-        color: #ccc;
+        color: black;
       }
       
       .weather-container form {
@@ -59,10 +59,10 @@
       }
       
       .weather-container p{
-        color: #ccc;
-        height: 70px;
+        color: black;
+        height: 80px;
         width: 120px;
-        border: 1px dotted white;
+        border: 1px dotted black;
         margin-top: 40px;
        }
        
@@ -72,14 +72,32 @@
        .weather-container h4{
         margin-top: 20px;
         color: white;
+        font-size: 18px;
        }
 
-       ..weather-container hr{
-        color: gray;
+       .weather-container hr{
+        color: black;
        }
        .box3{
         display: flex;
         justify-content: space-evenly;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         height: 100px;
+       }
+
+       .box33{
+        height: 100px;
+        width: 10%;
+        /* border: 1px solid black; */
+        margin-top: 10px;
+        border-radius: 15px;
+        font-size: 18px;
+        background-image: linear-gradient(rgba(34,32,32,0.2), rgba(33,13,31,0.4));
+       
+        
+       }
+       .box33 h5{
+        color: white;
+        margin-top: 5px;
+        font-size: 15px;
        }
